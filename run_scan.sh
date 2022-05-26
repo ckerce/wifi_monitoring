@@ -4,8 +4,8 @@
 
 #nmcli dev wifi list bssid $bssid
 
-outfile='nmcli_scan3.txt'
-datfile='outdat3.csv'
+outfile='nmcli_scan4.txt'
+datfile='outdat4.csv'
 echo '' > $outfile
 echo 'dat,ssid,val,,,' > $datfile
 
@@ -21,4 +21,7 @@ do
    echo time_scan_end $(date +%s)    >> $outfile
 done
 
-cat $datfile | sed -e 's/,,,//g' >> mod_$datfile
+#cat $datfile | sed -e 's/,,,//g' >> mod_$datfile
+num=$(ls -lahtr working*.csv | wc -l)
+workingfile=working_$num.csv
+cat $datfile | sed -e 's/,,,/,/g' -e 's/,,,/,/g' -e 's/,,/,/g' -e 's/,,/,/g' -e 's/,$//g' > $workingfile
