@@ -1,6 +1,7 @@
 #!/bin/bash
 
 N='NULL'
+iface=$(iw dev | awk '$1=="Interface"{print $2}' | tail -n 1)
 while (( "$#" )); do
   case "$1" in
     -n|--num_scans)
@@ -35,7 +36,7 @@ do
    echo time_scan_start $(date +%s)  >> $outfile
    nmcli dev wifi list --rescan yes  >> $outfile
    echo scan_$i,--,$ts,,, >> $datfile
-   nmcli -f BSSID,SSID,SIGNAL dev wifi list ifname wlx5ca6e6a78898 | grep -v BSSID | sed -e 's/[^\ ]\ [^\ ]/_/g' -e 's/\ \ /\ /g' -e 's/\ /,/g' >> $datfile
+   nmcli -f BSSID,SSID,SIGNAL dev wifi list ifname $iface | grep -v BSSID | sed -e 's/[^\ ]\ [^\ ]/_/g' -e 's/\ \ /\ /g' -e 's/\ /,/g' >> $datfile
    echo time_scan_end $(date +%s)    >> $outfile
 done
 
