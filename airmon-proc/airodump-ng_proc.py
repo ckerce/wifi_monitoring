@@ -41,15 +41,24 @@ def plot_wifi_hits(data_struct):
        print(dat[d]['ssid'])
        k+=1
 
+def length_label(n):
+    pad = '             '
+    sym = ']]]]]]]]]]]]]]'
+    out = sym[0:n]+pad[n:]
+    return out
+
 def plot_short_wifi_hits(data_struct, T=30):
-    plt.figure()
-    k=0
-    dat = data_struct
-    for d in dat:
-      if (dat[d]['len'] < 25) & (dat[d]['len'] > 0) & ( (np.max(dat[d]['t']) - np.min(dat[d]['t'])) < T):
-        plt.plot(np.array(dat[d]['t']), dat[d]['len']*100 + np.array(dat[d]['pwr']),'.')
-        print(dat[d]['chan'][0], dat[d]['ssid'])
-        k+=1
+    plt.figure() 
+    k=0 
+    dat = data_struct 
+    for d in dat: 
+      if (dat[d]['len'] < 120) & (dat[d]['len'] > 0) & ( (np.max(dat[d]['t']) - np.min(dat[d]['t'])) < T): 
+        plt.plot(np.array(dat[d]['t']), (dat[d]['len']+1)*100 + np.array(dat[d]['pwr'])) 
+        curSSID = np.unique(dat[d]['ssid'])[0]
+        Ntmp = len(dat[d]['ssid'])
+        count_symbol = length_label( Ntmp )
+        print('chan = ',dat[d]['chan'][0], ' : pwr = ', np.round(np.average(dat[d]['pwr'])), ' : count = ', Ntmp, ' ', count_symbol,  ' : ', curSSID) 
+        k+=1 
 
 def plot_intermediate_wifi_hits(data_struct,T=30):
     plt.figure()
@@ -65,7 +74,7 @@ def plot_intermediate_wifi_hits(data_struct,T=30):
 if __name__ == '__main__':
    wifi_data = {} 
    count = 0
-   for i in range(2*3600):
+   for i in range(6*2*3600):
       os.system("cp outfile-01.csv tmpfile.csv")
       time.sleep(0.5)
       with open('tmpfile.csv', 'r') as csvfile:
