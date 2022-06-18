@@ -9,5 +9,5 @@ I then wanted to verify that the power levels made sense from a basic physical p
 ![Alt text](xpo-ltl_trucks_with_wifi_signal_powers.png?raw=true)
 Figure: Two trucks passing in opposite directions within 90 seconds of each other.  Notice that the leftward signal is visible for longer regardless of which direction the truck is traveling.  This asymmetry can be used to determine travel direction purely from wifi power levels.  Note that wifi timestamps are off by 4 hours, since I did not change the time-stamp mode from PST.
 
-![Alt text](xpo-ltl_signal_powers.png?raw=true)
+![Alt text](xpo-ltl-signal_powers.png?raw=true)
 Figure:  Time series comparioson with second signal time reversed due to opposite direction of travel.
