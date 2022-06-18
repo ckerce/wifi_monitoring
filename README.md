@@ -1,6 +1,6 @@
 # wifi_monitoring
 
-I wanted to implement a non-visul method for determing traffic volume and speed on a nearby road, with the goal of eventually combining this information with an accelerometer to allow correlation wiht heavy vehicles. 
+I wanted to implement a non-visul method for determing traffic volume and speed on a nearby road, with the goal of eventually combining this information with an accelerometer to allow correlation of wifi and visual data with heavy vehicles. 
 
 The first step was to get the capture going, and determine RX antenna configurations that would generate an assymatric directional signal. I set up airodump-ng to monitor wifi signal power levels using a reciever that can be set into monitor mode, and implemented a system to pull (signal-id, signal-power) levels once per second. I chose a dual antenna device with 1/2 wavelength spacing at 2.4 GHz and a little over 1 wavelength at 5 GHz.  Successful positioning of the antenna orientation relative to the road can be seen in the power level charts in the figure below.
 
