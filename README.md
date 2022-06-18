@@ -1,4 +1,4 @@
-# Traffic characterization using in-vehicle wifi temporal signal properties 
+# Traffic characterization via measurement of on-vehicle wifi temporal signal properties 
 
 I wanted to implement a non-visul method for determing traffic volume and speed on a nearby road, with the goal of eventually combining this information with an accelerometer to allow correlation of wifi and visual data with heavy vehicles. 
 
