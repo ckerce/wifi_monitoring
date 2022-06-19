@@ -14,4 +14,4 @@ Figure:  Time series comparioson with second signal time reversed due to opposit
 
 # Error calculations
 The ratio of the speeds of the two trucks can be estimated from camera angles and time-to-subtend the angles.  It looks like they are traveling about the same speed, with 4:1 odds that the first truck is going faster than the second.
-![Alt text](speed_calculation.png?raw=true)
+![Alt text](speed_calculations.png?raw=true)
