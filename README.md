@@ -13,5 +13,5 @@ Figure: Two trucks passing in opposite directions within 90 seconds of each othe
 Figure:  Time series comparioson with second signal time reversed due to opposite direction of travel.
 
 # Error calculations
-The ratio of the speeds of the two trucks can be estimated from camera angles and time-to-subtend the angles.  It looks like they are traveling about the same speed, with 4:1 odds that the first truck is going faster than the second.
+The ratio of the speeds of the two trucks can be estimated from camera angles and time-to-subtend the angles.  It looks like they are traveling about the same speed, with 4:1 odds that the first truck is going faster than the second.  Rough calculations are that the first truck is traveling about 10% faster than the second, but the velocity ratio standard deviation is about 5.5%.
 ![Alt text](speed_calculations.png?raw=true)
