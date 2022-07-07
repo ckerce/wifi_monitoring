@@ -139,7 +139,7 @@ def cur_time_interval_flag(dat, Tstart):
     return val
 
 async def snap_reolink():
-    addr = 'http://xxx.xxx.xx.xxx/cgi-bin/api.cgi?cmd=Snap&rs=blah&channel=0&user=x&password=x'
+    #addr = 'http://xxx.xxx.xx.xxx/cgi-bin/api.cgi?cmd=Snap&rs=blah&channel=0&user=x&password=x'
     snap_time = str(np.int(time.time())) 
     for idx in range(5):  
        response = requests.get(addr)
@@ -149,18 +149,39 @@ async def snap_reolink():
        time.sleep(0.5)
 
 if __name__ == '__main__':
-   
-   #t0 = time.time()
+   '''
+      1. Monitor the output of airodump-ng process approximately once every second and build 
+      a data structure of the outputs.  Single channel monitoring gives the fastest update 
+      rate of 1 output per second.
+      
+      >> rm outfile-01.csv && sudo airodump-ng -c 6 -w outfile --output-format --write-interval 1 csv wlan0mon
 
+      2. Implements a trigger on SSID observations. In the logged output, you would see:
+           New bssid =  XX:XX:XX:XX:XX:XX , SSID = xpo-ltl   ,  Time =   2022-YY-YY 08:39:15,  Last Seen =  1657197555.0,  len =  1
+           Taking Snapshot ::   xpo-ltl
+
+      TODO:
+         -- Implement MAC address ignore list.
+         -- Implement argparse to input camera address, username, and password
+         -- Add ability to load airodump-ng data from saved file to test against rare data formating errors. 
+         -- Add ability to save all on error. 
+   '''
+   
+   # Set up SSID regular expressions to match for image capture
    p_xpo = re.compile('xpo')
    p_Keep = re.compile('Keep')
    p_Water = re.compile('Water')
 
-   while True: #time.time() < t0 + 15:
+   # Set whitelist of MAC addresses to ignore
+   # TODO
+
+   while True: 
       wifi_data = {} 
       count = 0
       Tstart = time.time()
       Tend = Tstart + 60*60
+
+      # The main wifi capture, filtering, and tracking loop.
       while time.time() < Tend: 
          time.sleep(0.5)
          if len(glob.glob('outfile-01.csv')) > 0:  # allows for a restart of the airodump-ng logger 
